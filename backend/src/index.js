@@ -12,5 +12,5 @@ mongoose.connect('mongodb+srv://folha:folha01@cluster0-2nfu3.mongodb.net/test?re
     useUnifiedTopology: true
 });
 
-//Definindo a porta que será utilizada para as APIs
+//Definindo a porta que será utilizada para as APIs (ex: httpp://localhost:3333)
 app.listen(3333);

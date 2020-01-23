@@ -1,13 +1,19 @@
-const axios = require('axios');
 const Book = require('../models/Book');
 
 module.exports = {
 
+    //retorna valor do livro cadastrado no banco
+    async preco(request, response){
+        const _id = request._id;
+        const books = await Book.find({ _id }, "preco", function (err, docs) { });
+        return books;
+    },
+    
     //Listagem de Livros
     async index(request, response){
         const books = await Book.find({ }, "_id nome preco capa_url", function (err, docs) { });
         //retorna todos os livros encontrados
-            return response.json(books);
+        return response.json(books);
     },
 
     //Cadastro de Livros
