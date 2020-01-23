@@ -33,7 +33,12 @@ module.exports = {
         }
         //se o livro já existir, retorna codigo de erro
         else{
-            return response.json({code: 202, message: 'Não foi possível realizar o cadastro - Livro já existente.'});
+            return response.json(
+                {
+                    code: 202, 
+                    message: 'Não foi possível realizar o cadastro - Livro já existente.'
+                }
+            );
         }
     }
 }
