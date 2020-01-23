@@ -5,9 +5,9 @@ module.exports = {
 
     //Listagem de Livros
     async index(request, response){
-        const books = await Book.find();
-
-        return response.json(books);
+        const books = await Book.find({ }, "_id nome preco capa_url", function (err, docs) { });
+        //retorna todos os livros encontrados
+            return response.json(books);
     },
 
     //Cadastro de Livros
@@ -15,7 +15,7 @@ module.exports = {
         const { nome, preco, autor, autor_bio, categoria, sinopse, editora, capa_url } = request.body;
         //verifica se ja existe o registro do livro no banco
         let book = await Book.findOne({ nome });
-        //caso não exista, realiza o cadastro
+        //caso não exista, realiza o cadastro no banco
         if (!book){
 
             book = await Book.create({
@@ -28,9 +28,12 @@ module.exports = {
                 editora,
                 capa_url,
             })
-
+            //retorna o livro cadastrado
+            return response.json(book);
         }
-
-        return response.json(book);
+        //se o livro já existir, retorna codigo de erro
+        else{
+            return response.json({code: 202, message: 'Não foi possível realizar o cadastro - Livro já existente.'});
+        }
     }
 }
