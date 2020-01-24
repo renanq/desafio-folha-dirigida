@@ -5,8 +5,9 @@ module.exports = {
     //retorna valor do livro cadastrado no banco
     async preco(request, response){
         const _id = request._id;
-        const books = await Book.find({ _id }, "preco", function (err, docs) { });
-        return books;
+        const book = await Book.findOne({ _id }, "preco", function (err, docs) { });
+        console.log(book);
+        return book.preco;
     },
     
     //Listagem de Livros
