@@ -1,0 +1,56 @@
+li.book-item {
+    background-color: #FFFFFF;
+    box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02);
+    border-radius: 5px;
+    padding: 20px;
+}
+
+li.book-item header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+li.book-item header img {
+    width: 60px;
+    height: 80px;
+}
+
+li.book-item header .book-info {
+    margin-left: 10px;
+}
+
+.book-info strong {
+    display: block;
+    font-size: 16px;
+    color: #333;
+}
+
+li.book-item a {
+    color: #8E4DFF;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+li.book-item a:hover {
+    color: #5A2EA6;
+}
+
+button[type=submit] {
+    width: 100%;
+    border: 0;
+    margin-top: 30px;
+    background: #FFBF00;
+    border-radius: 2px;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFF;
+    cursor: pointer;
+    transition: background 0.5s;;
+}
+
+button[type=submit]:hover {
+    background-color: #886A08;
+}
