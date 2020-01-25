@@ -43,7 +43,7 @@ module.exports = {
                 livros = livro_id;
             }
             //altera o carrinho, no banco de dados, adicionando o array de livros (ids)
-            let = await Cart.updateOne({ _id }, { livros_id: livros });
+            result = await Cart.updateOne({ _id }, { livros_id: livros });
         }
 
         if (acao == "remover"){
@@ -55,18 +55,37 @@ module.exports = {
         }
 
         //calculando subtotal (varre o array dos ids dos livros no carrinho
-        //soma o valor de cada livro e guarda no banco)
+        //soma o valor de cada livro do carrinho e guarda no banco)
         livros = cart.livros_id;
-        let idlivro = livros[0];
-        console.log(idlivro);
         let subtotal = 0;
-        subtotal = BookController.preco({ _id: idlivro });
-        setTimeout(() => {console.log(subtotal)}, 3000);
-    
-        //result = await Cart.updateOne({ _id }, { subtotal: subtotal });
-
-        //retorna dados da alteração
-        return response.json(cart);        
+        for (let index = 0; index < livros.length; index++) {
+            var qtd = livros.length;
+            var valor = new Promise(function(resolve, reject) {
+                resolve(
+                    //traz o preço do livro
+                    BookController.preco({ _id: livros[index] })
+                );
+            });
+            valor.then(function(value) {
+                console.log('livro ' + qtd);
+                console.log('valor do livro ' + value);
+                //soma o valor no subtotal
+                subtotal = subtotal + value;
+                return qtd;
+            }).then(async function(value){
+                console.log('subtotal ' + subtotal);
+                    //recebe o subtotal finalizado, grava no banco ajustando casas decimais
+                    result = await Cart.updateOne({ _id }, { subtotal: subtotal.toFixed(2) });
+                    return qtd;
+            }).then(async function(value){
+                qtd = qtd - 1;
+                if (qtd == 0){
+                    //busca novamente o carrinho atualizado e retorna 
+                    cart = await Cart.findOne({ _id });
+                    return response.json(cart);
+                }
+            });
+        }//fim do For
     },
 
     //apagar o carrinho de compras (cart) do banco de dados
