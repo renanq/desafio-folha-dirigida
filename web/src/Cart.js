@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import { Switch, Route } from 'react-router-dom';
-import api from './services/api';
+import React from 'react';
 
 import './global.css';
 import './App.css';

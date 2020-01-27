@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingCart, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import './styles.css';
 
 function BookItem({ book }) {
@@ -12,7 +14,7 @@ function BookItem({ book }) {
                     <Link to={`/book/${book._id}`}>+Detalhes</Link>
                 </div>
             </header>
-            <button type="submit">Adicionar ao Carrinho</button>
+            <button type="submit"><FontAwesomeIcon icon={ faShoppingCart } /> Adicionar ao Carrinho</button>
         </li>
     );
 }

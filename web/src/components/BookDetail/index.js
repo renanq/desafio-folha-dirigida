@@ -1,8 +1,6 @@
 import React from 'react';
-import { Switch, Route, useParams} from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
-import api from '../../services/api';
 import './styles.css';
 
 
@@ -20,6 +18,7 @@ function BookDetail({ book }) {
                 <div className="nome">{book.nome}</div>
                 <div className="preco">R$ {book.preco.toFixed(2)}</div>
                 <div className="autor"><span>Autor:</span> {book.autor}</div>
+                <div className="editora"><span>Editora:</span> {book.editora}</div>
                 <div className="categoria"><span>Categoria:</span> {book.categoria}</div>
                 <div className="sinopse"><span>Sinopse:</span> {book.sinopse}</div>
                 <div className="autor-bio"><span>Sobre o autor:</span> {book.autor_bio}</div>
