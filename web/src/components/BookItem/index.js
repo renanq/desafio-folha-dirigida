@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 import './styles.css';
 
 function BookItem({ book }) {
@@ -8,7 +9,7 @@ function BookItem({ book }) {
                 <img src={book.capa_url} alt={book.nome} />
                 <div className="book-info">
                     <strong>{book.nome}</strong>
-                    <a href={`/book?bookid=${book._id}`}>+Detalhes</a>
+                    <Link to={`/book/${book._id}`}>+Detalhes</Link>
                 </div>
             </header>
             <button type="submit">Adicionar ao Carrinho</button>

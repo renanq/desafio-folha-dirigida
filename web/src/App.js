@@ -29,10 +29,6 @@ function App() {
     <div id="app">
       <SiteHeader />
       <main>
-        <Switch>
-          <Route path="/book" componet={BookDetail} />
-          <Route path="/cart" componet={CartDetail} />
-        </Switch>
         <ul>
           {books.map(book => (
             <BookItem key={book._id} book={book}/>

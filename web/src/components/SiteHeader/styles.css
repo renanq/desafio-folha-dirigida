@@ -10,6 +10,18 @@
 .site-topo .site-nome {
     font-weight: bold;
     font-size: 30px;
+    color: #000;
+}
+
+.site-topo .site-nome a{
+    font-weight: bold;
+    font-size: 30px;
+    color: #000;
+    text-decoration: none;
+}
+
+.site-topo .site-nome a:hover {
+    text-decoration: none;
 }
 
 .site-topo span {

@@ -1,0 +1,90 @@
+#livro {
+    background-color: #FFF;
+    box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02);
+    border-radius: 5px;
+    padding: 20px;
+    display: flex;
+    flex-direction: row;
+    align-items: top;
+}
+
+#livro img {
+    width: 200px;
+    height: 325px;
+}
+
+#livro #detalhes {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    color: #848484;
+}
+
+#livro #detalhes div {
+    margin-bottom: 7px;
+}
+
+#livro #detalhes span {
+    font-weight: bold;
+}
+
+#livro #detalhes .nome {
+    font-size: 30px;
+    font-weight: bold;
+    color: #FFBF00;
+}
+
+#livro #detalhes .preco {
+    font-size: 24px;
+    font-weight: bold;
+    color: #5A2EA6;
+}
+
+#livro #detalhes .sinopse,  #livro #detalhes .autor-bio{
+    text-align: justify;
+}
+
+#livro #acoes {
+    display: flex;
+    flex-direction: column;
+}
+
+#livro #acoes button[type=submit] {
+    width: 100%;
+    border: 0;
+    margin-top: 10px;
+    background: #FFBF00;
+    border-radius: 2px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFF;
+    cursor: pointer;
+    transition: background 0.5s;
+    text-align: center;
+}
+
+#livro #acoes button[type=submit]:hover {
+    background-color: #886A08;
+}
+
+#livro #acoes a{
+    display: block;
+    width: 100%;
+    border: 0;
+    margin-top: 10px;
+    background: #FF0000;
+    border-radius: 2px;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFF;
+    cursor: pointer;
+    transition: background 0.5s;
+    text-decoration: none;
+    text-align: center;
+}
+
+#livro #acoes a:hover{
+    background-color: #8A0808;
+}
