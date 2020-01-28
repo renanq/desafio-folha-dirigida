@@ -21,7 +21,7 @@ function Book() {
       }
   
       loadBook();
-    }, []);
+    }, [id]);
 
   return (
       

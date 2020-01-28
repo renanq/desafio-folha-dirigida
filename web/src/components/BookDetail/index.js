@@ -12,7 +12,7 @@ function BookDetail({ book }) {
             <div id="acoes">
                 <img src={book.capa_url} alt={book.nome} />
                 <button type="submit"><FontAwesomeIcon icon={ faShoppingCart } /> Adicionar ao Carrinho</button>
-                <a href="/" ><FontAwesomeIcon icon={ faArrowCircleLeft } /> Voltar</a>
+                <a href="javascript: history.go(-1)" ><FontAwesomeIcon icon={ faArrowCircleLeft } /> Voltar</a>
             </div>
             <div id="detalhes">
                 <div className="nome">{book.nome}</div>

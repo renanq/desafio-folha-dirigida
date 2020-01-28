@@ -67,13 +67,10 @@ module.exports = {
                 );
             });
             valor.then(function(value) {
-                console.log('livro ' + qtd);
-                console.log('valor do livro ' + value);
                 //soma o valor no subtotal
                 subtotal = subtotal + value;
                 return qtd;
             }).then(async function(value){
-                console.log('subtotal ' + subtotal);
                     //recebe o subtotal finalizado, grava no banco ajustando casas decimais
                     result = await Cart.updateOne({ _id }, { subtotal: subtotal.toFixed(2) });
                     return qtd;

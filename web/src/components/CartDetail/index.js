@@ -11,13 +11,13 @@ function CartDetail({ subtotal , booksIds}) {
     useEffect(() => {
 
         async function loadBooks(id) {
+            //busca as informações do livro
             const response = await api.get(`/search?_id=${id}`);
-            books.push(response.data);
-            //setBooks(books);
-            setBooks([...books, response.data])
-            //setBooks(books);
+            //junta o livro no array dos livros do carrinho
+            setBooks(prevState => prevState.concat(response.data));         
         };
         
+        //pra cada ID de livro armazenado no carrinho, é carregada a info do livro
         booksIds.forEach(element => {
             loadBooks(element);
         });
@@ -43,7 +43,7 @@ function CartDetail({ subtotal , booksIds}) {
                             <img src={b.capa_url} alt={b.nome} />
                         </div>
                         <div id="valor">
-                            {b.preco}
+                            R${b.preco.toFixed(2)}
                         </div>
                     </div>
                 ))}
