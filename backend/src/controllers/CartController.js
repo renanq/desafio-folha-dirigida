@@ -6,7 +6,7 @@ module.exports = {
     //detalhes do carrinho de compras (Cart) cadastrado no banco de dados
     async index(request, response){
         const _id = request.params.id;
-        const cart = await Cart.find({ _id });
+        const cart = await Cart.findOne({ _id });
         return response.json(cart);
     },
 

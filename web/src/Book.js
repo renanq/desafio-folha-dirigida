@@ -28,9 +28,7 @@ function Book() {
     <div id="app">
       <SiteHeader />
       <main>
-        {book.map(book => (
             <BookDetail key={book._id} book={book}/>
-          ))}
       </main>
     </div>
 

@@ -6,7 +6,6 @@ module.exports = {
     async preco(request, response){
         const _id = request._id;
         const book = await Book.findOne({ _id }, "preco", function (err, docs) { });
-        console.log('id do livro ' + _id);
         return book.preco;
     },
     

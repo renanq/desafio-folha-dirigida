@@ -13,7 +13,7 @@ function BookAdd() {
     async function handleAddBook(data){
 
         const response = await api.post('/books', data);
-        if (response.data._id != undefined){
+        if (response.data._id !== undefined){
             const _id = response.data._id;
             window.location.href = "/book/" + _id;
         }

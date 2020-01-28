@@ -1,0 +1,71 @@
+#cart {
+    background-color: #FFF;
+    box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02);
+    border-radius: 5px;
+    width: 100%;
+    padding: 20px;
+}
+
+#cart h1 {
+    font-size: 30px;
+    margin-bottom: 5px;
+}
+
+#cart #livro {
+    background-color: #F4F4F4;
+    box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.02);
+    border-radius: 5px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: repeat(3, 3fr);
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+#cart #livro img {
+    width: 70px;
+    height: 90px;
+}
+#cart #livro .image {
+    text-align: center;
+}
+
+#cart #livro #detalhes .nome {
+    font-size: 16px;
+    font-weight: bold;
+    color: #5A2EA6;
+}
+
+#cart #livro #detalhes button[type=submit] {
+    border: 0;
+    margin-top: 5px;
+    background: #FF0000;
+    border-radius: 2px;
+    padding: 5px 10px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #FFF;
+    cursor: pointer;
+    transition: background 0.5s;;
+}
+
+#cart #livro #detalhes button[type=submit]:hover {
+    background-color: #8A0808;
+}
+
+#cart #livro #valor {
+    color: #000;
+    font-weight: bold;
+    font-size: 16px;
+    text-align: right;
+    width: 100%;
+}
+
+#cart .subtotal{
+    background-color: #FFBF00;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 20px;
+    text-align: right;
+}
