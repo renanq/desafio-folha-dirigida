@@ -12,33 +12,47 @@ import CartDetail from './components/CartDetail';
 function Cart() {
   const [booksIds, setBooksIds] = useState([]);
   const [subtotal, setSubtotal] = useState(0);
-  const [id, setId] = useState('');
   
   useEffect(() => {
+
     async function loadCart() {
-      //busca o ID do carrinho salvo na sessão
-      setId(sessionStorage.getItem("@rqbookstore/cartid"));
-      //chama a API que retorna o carrinho existente em banco e suas informações
-      const response = await api.get(`/cart/${id}`);
-      setBooksIds(response.data.livros_id);//guarda IDs dos livros existentes no carrinho
-      setSubtotal (response.data.subtotal);//guarda o valor subtotal do carrinho
+      var response;
+      // busca o ID do carrinho se existente na sessão
+      let _id = sessionStorage.getItem("@rqbookstore/cartid");
+      //se existir na sessão, ele busca no banco de dados
+      if (_id !== null){
+        response = await api.get(`/cart/${_id}`);
+      //se não existir na sessão, cria no banco o carrinho e guarda o ID na sessão
+      }else{
+        response = await api.post("/cart/",(
+            {
+              "livros_id": [],
+              "subtotal": 0
+            }
+          ));
+        _id = response.data._id;
+        sessionStorage.setItem("@rqbookstore/cartid", _id);
+      } 
+      setBooksIds(response.data.livros_id);
+      setSubtotal(response.data.subtotal);
     };
 
-    loadCart();    
-  }, [id]);
+    loadCart();
+    //loadCartItens();    
+  }, []);
 
   async function handleRemoveBook(data){
-
-    const response = await api.put(`http://localhost:3333/cart?_id=${id}&acao=remover&livro_id=${data}`)
+    const id = sessionStorage.getItem("@rqbookstore/cartid");
+    const response = await api.put(`/cart?_id=${id}&acao=remover&livro_id=${data}`)
     
-    await setBooksIds(response.data.livros_id);
-    await setSubtotal(response.data.subtotal);
+    setBooksIds(response.data.livros_id);
+    setSubtotal(response.data.subtotal);
     
   }
 
   return (   
     <div id="app">
-      <SiteHeader />
+      <SiteHeader qtd={booksIds.length} />
       <main>
         <CartDetail subtotal={subtotal} booksIds={booksIds} onClick={handleRemoveBook} />
       </main>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import api from '../../services/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import './styles.css';
 
 function CartDetail({ subtotal , booksIds, onClick}) {
@@ -41,7 +41,7 @@ function CartDetail({ subtotal , booksIds, onClick}) {
                                     {b.nome}
                                 </Link>
                             </div>
-                            <button key={b._id} onClick={() => handleClick(b._id)}><FontAwesomeIcon icon={ faShoppingCart } /> Remover do Carrinho</button>
+                            <button key={b._id} onClick={() => handleClick(b._id)}><FontAwesomeIcon icon={ faTrashAlt } /> Remover do Carrinho</button>
                         </div>
                         <div className="image">
                             <img src={b.capa_url} alt={b.nome} />

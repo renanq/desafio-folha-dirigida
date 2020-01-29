@@ -37,7 +37,7 @@ li.book-item a:hover {
     color: #5A2EA6;
 }
 
-button[type=submit] {
+#bt-add {
     width: 100%;
     border: 0;
     margin-top: 30px;
@@ -51,6 +51,24 @@ button[type=submit] {
     transition: background 0.5s;;
 }
 
-button[type=submit]:hover {
+#bt-add:hover {
     background-color: #886A08;
+}
+
+#bt-remove {
+    width: 100%;
+    border: 0;
+    margin-top: 30px;
+    background: #FF0000;
+    border-radius: 2px;
+    padding: 15px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #FFF;
+    cursor: pointer;
+    transition: background 0.5s;;
+}
+
+#bt-remove:hover {
+    background-color: #8A0808;
 }

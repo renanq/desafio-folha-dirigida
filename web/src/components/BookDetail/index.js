@@ -1,18 +1,29 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt, faCartPlus, faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import './styles.css';
 
 
-function BookDetail({ book }) {
+function BookDetail({ book, booksIds, onClick}) {
 
+    async function handleClick(id, acao) {
+
+        await onClick(id, acao);
+    };
 
     return (
         <div id="livro">
             <div id="acoes">
                 <img src={book.capa_url} alt={book.nome} />
-                <button type="submit"><FontAwesomeIcon icon={ faShoppingCart } /> Adicionar ao Carrinho</button>
-                <a href="javascript: history.go(-1)" ><FontAwesomeIcon icon={ faArrowCircleLeft } /> Voltar</a>
+                { booksIds.indexOf(book._id) == -1 &&
+                    <button id="bt-add" key={book._id} onClick={() => handleClick(book._id, "adicionar")}>
+                        <FontAwesomeIcon icon={ faCartPlus } /> Adicionar ao Carrinho
+                    </button> }
+                { booksIds.indexOf(book._id) != -1 &&
+                    <button id="bt-remove" key={book._id} onClick={() => handleClick(book._id, "remover")}>
+                        <FontAwesomeIcon icon={ faTrashAlt } /> Remover do Carrinho
+                    </button> }
+                <a href="javascript: history.go(-1);" ><FontAwesomeIcon icon={ faArrowCircleLeft } /> Voltar</a>
             </div>
             <div id="detalhes">
                 <div className="nome">{book.nome}</div>
