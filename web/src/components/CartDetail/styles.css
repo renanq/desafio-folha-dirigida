@@ -31,7 +31,14 @@
     text-align: center;
 }
 
-#cart #livro #detalhes .nome {
+#cart #livro #detalhes .nome a {
+    font-size: 16px;
+    font-weight: bold;
+    color: #8E4DFF;
+    text-decoration: none;
+}
+
+#cart #livro #detalhes .nome a:hover {
     font-size: 16px;
     font-weight: bold;
     color: #5A2EA6;
