@@ -15,11 +15,11 @@ function BookDetail({ book, booksIds, onClick}) {
         <div id="livro">
             <div id="acoes">
                 <img src={book.capa_url} alt={book.nome} />
-                { booksIds.indexOf(book._id) == -1 &&
+                { booksIds.indexOf(book._id) === -1 &&
                     <button id="bt-add" key={book._id} onClick={() => handleClick(book._id, "adicionar")}>
                         <FontAwesomeIcon icon={ faCartPlus } /> Adicionar ao Carrinho
                     </button> }
-                { booksIds.indexOf(book._id) != -1 &&
+                { booksIds.indexOf(book._id) !== -1 &&
                     <button id="bt-remove" key={book._id} onClick={() => handleClick(book._id, "remover")}>
                         <FontAwesomeIcon icon={ faTrashAlt } /> Remover do Carrinho
                     </button> }

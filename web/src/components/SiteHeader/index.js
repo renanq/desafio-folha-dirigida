@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
+import api from '../../services/api';
 import './styles.css';
 
 function SiteHeader( { qtd }) {
@@ -10,6 +11,17 @@ function SiteHeader( { qtd }) {
       
 
     }, [qtd]);
+
+    //apaga o carrinho criado da sessão e do banco de dados
+    window.addEventListener("beforeunload", (e) => 
+    {  
+        e.preventDefault();
+
+        const id = sessionStorage.getItem("@rqbookstore/cartid");
+        sessionStorage.removeItem("@rqbookstore/cartid");
+        api.delete(`/cart/${id}`);
+    
+    });
 
     return (
         

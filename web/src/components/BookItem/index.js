@@ -22,11 +22,11 @@ function BookItem({ book , onClick, booksIds}) {
                     <Link to={`/book/${book._id}`}>+Detalhes</Link>
                 </div>
             </header>
-            { booksIds.indexOf(book._id) == -1 &&
+            { booksIds.indexOf(book._id) === -1 &&
                 <button id="bt-add" key={book._id} onClick={() => handleClick(book._id, "adicionar")}>
                     <FontAwesomeIcon icon={ faCartPlus } /> Adicionar ao Carrinho
                 </button> }
-            { booksIds.indexOf(book._id) != -1 &&
+            { booksIds.indexOf(book._id) !== -1 &&
                 <button id="bt-remove" key={book._id} onClick={() => handleClick(book._id, "remover")}>
                     <FontAwesomeIcon icon={ faTrashAlt } /> Remover do Carrinho
             </button> }
