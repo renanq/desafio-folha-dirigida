@@ -16,7 +16,7 @@ function BookDetail({ book }) {
             </div>
             <div id="detalhes">
                 <div className="nome">{book.nome}</div>
-                <div className="preco">R$ {book.preco}</div>
+                <div className="preco">R$ {(book.preco*1).toFixed(2)}</div>
                 <div className="autor"><span>Autor:</span> {book.autor}</div>
                 <div className="editora"><span>Editora:</span> {book.editora}</div>
                 <div className="categoria"><span>Categoria:</span> {book.categoria}</div>

@@ -27,9 +27,7 @@ function CartDetail({ subtotal , booksIds, onClick}) {
     async function handleClick(id) {
 
         await onClick(id);
-
-        setBooks(books);
-
+        await setBooks([]);
     }
 
     return (
@@ -49,13 +47,13 @@ function CartDetail({ subtotal , booksIds, onClick}) {
                             <img src={b.capa_url} alt={b.nome} />
                         </div>
                         <div id="valor">
-                            R${b.preco.toFixed(2)}
+                            R${(b.preco*1).toFixed(2)}
                         </div>
                     </div>
                 ))}
             <div className="subtotal">
                 Subtotal:&nbsp;
-                <strong>R${subtotal.toFixed(2)}</strong>
+                <strong>R${(subtotal*1).toFixed(2)}</strong>
             </div>
         </div>
            

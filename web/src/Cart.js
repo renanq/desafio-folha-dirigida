@@ -31,7 +31,9 @@ function Cart() {
 
     const response = await api.put(`http://localhost:3333/cart?_id=${id}&acao=remover&livro_id=${data}`)
     
-    setSubtotal(response.data.subtotal);
+    await setBooksIds(response.data.livros_id);
+    await setSubtotal(response.data.subtotal);
+    
   }
 
   return (   
