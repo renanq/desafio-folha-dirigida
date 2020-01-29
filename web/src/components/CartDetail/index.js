@@ -5,8 +5,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons';
 import './styles.css';
 
-function CartDetail({ subtotal , booksIds}) {
-    let [books, setBooks] = useState([]);
+function CartDetail({ subtotal , booksIds, onClick}) {
+    const [books, setBooks] = useState([]);
 
     useEffect(() => {
 
@@ -24,7 +24,13 @@ function CartDetail({ subtotal , booksIds}) {
 
     }, [booksIds]);
 
-   
+    async function handleClick(id) {
+
+        await onClick(id);
+
+        setBooks(books);
+
+    }
 
     return (
         <div id="cart">
@@ -37,7 +43,7 @@ function CartDetail({ subtotal , booksIds}) {
                                     {b.nome}
                                 </Link>
                             </div>
-                            <button type="submit"><FontAwesomeIcon icon={ faShoppingCart } /> Remover do Carrinho</button>
+                            <button key={b._id} onClick={() => handleClick(b._id)}><FontAwesomeIcon icon={ faShoppingCart } /> Remover do Carrinho</button>
                         </div>
                         <div className="image">
                             <img src={b.capa_url} alt={b.nome} />
@@ -50,7 +56,6 @@ function CartDetail({ subtotal , booksIds}) {
             <div className="subtotal">
                 Subtotal:&nbsp;
                 <strong>R${subtotal.toFixed(2)}</strong>
-                {console.log(books)}
             </div>
         </div>
            

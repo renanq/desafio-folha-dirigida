@@ -37,7 +37,7 @@
     color: #5A2EA6;
 }
 
-#cart #livro #detalhes button[type=submit] {
+#cart #livro #detalhes button {
     border: 0;
     margin-top: 5px;
     background: #FF0000;
@@ -50,7 +50,7 @@
     transition: background 0.5s;;
 }
 
-#cart #livro #detalhes button[type=submit]:hover {
+#cart #livro #detalhes button:hover {
     background-color: #8A0808;
 }
 
