@@ -110,7 +110,7 @@ function BookForm({onSubmit}) {
 
                 <div className="input-block">
                     <label htmlFor="sinopse">Sinopse</label>
-                    <input 
+                    <textarea cols={100} rows={10}
                     name="sinopse" 
                     id="sinopse" 
                     value={sinopse} 
@@ -120,8 +120,8 @@ function BookForm({onSubmit}) {
                 </div>
 
                 <div className="input-block">
-                    <label htmlFor="sinopse">Sobre o Autor</label>
-                    <input 
+                    <label htmlFor="autor_bio">Sobre o Autor</label>
+                    <textarea cols={100} rows={5}
                     name="autor_bio" 
                     id="autor_bio" 
                     value={autor_bio} 

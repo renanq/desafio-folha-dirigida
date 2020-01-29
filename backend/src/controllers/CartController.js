@@ -33,7 +33,7 @@ module.exports = {
         //a variavel recebe o array do banco
         let livros = cart.livros_id;
         //verifica se é pra adicionar ou remover o livro
-        if (acao == "adicionar"){
+        if (acao === "adicionar"){
             //se o carrinho já possuir algum livro (array com itens)
             if (livros != null){
                 //adiciona o livro no array
@@ -46,7 +46,7 @@ module.exports = {
             result = await Cart.updateOne({ _id }, { livros_id: livros });
         }
 
-        if (acao == "remover"){
+        if (acao === "remover"){
             if(livros != null){
                 livros.splice(livros.lastIndexOf(livro_id), 1);
                 //altera o carrinho, no banco de dados, adicionando o array de livros (ids)
@@ -58,31 +58,38 @@ module.exports = {
         //soma o valor de cada livro do carrinho e guarda no banco)
         livros = cart.livros_id;
         let subtotal = 0;
-        for (let index = 0; index < livros.length; index++) {
-            var qtd = livros.length;
-            var valor = new Promise(function(resolve, reject) {
-                resolve(
-                    //traz o preço do livro
-                    BookController.preco({ _id: livros[index] })
-                );
-            });
-            valor.then(function(value) {
-                //soma o valor no subtotal
-                subtotal = subtotal + value;
-                return qtd;
-            }).then(async function(value){
-                    //recebe o subtotal finalizado, grava no banco ajustando casas decimais
-                    result = await Cart.updateOne({ _id }, { subtotal: subtotal.toFixed(2) });
+        if(livros.length == 0){
+            await Cart.updateOne({ _id }, { subtotal: 0.00 });
+            cart = await Cart.findOne({ _id });
+            return response.json(cart);
+        }else{
+            for (let index = 0; index < livros.length; index++) {
+                var qtd = livros.length;
+                var valor = new Promise(function(resolve, reject) {
+                    resolve(
+                        //traz o preço do livro
+                        BookController.preco({ _id: livros[index] })
+                    );
+                });
+                valor.then(function(value) {
+                    //soma o valor no subtotal
+                    subtotal = subtotal + value;
                     return qtd;
-            }).then(async function(value){
-                qtd = qtd - 1;
-                if (qtd == 0){
-                    //busca novamente o carrinho atualizado e retorna 
-                    cart = await Cart.findOne({ _id });
-                    return response.json(cart);
-                }
-            });
-        }//fim do For
+                }).then(async function(value){
+                        //recebe o subtotal finalizado, grava no banco ajustando casas decimais
+                        result = await Cart.updateOne({ _id }, { subtotal: subtotal.toFixed(2) });
+                        return qtd;
+                }).then(async function(value){
+                    qtd = qtd - 1;
+                    if (qtd == 0){
+                        //busca novamente o carrinho atualizado e retorna 
+                        cart = await Cart.findOne({ _id });
+                        return response.json(cart);
+                    }
+                });
+            }//fim do For
+        }
+        
     },
 
     //apagar o carrinho de compras (cart) do banco de dados
