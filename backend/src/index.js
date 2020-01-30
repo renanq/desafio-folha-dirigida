@@ -2,8 +2,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 const routes = require('./routes.js');
 const cors = require('cors');
+const http = require('http');
 
 const app = express();
+const server = http.Server(app);
 
 //conexão com o banco de dados MongoDB
 mongoose.connect('mongodb+srv://folha:folha01@cluster0-2nfu3.mongodb.net/test?retryWrites=true&w=majority',  { 
@@ -18,4 +20,6 @@ app.use(express.json());
 app.use(routes);
 
 //Definindo a porta que será utilizada para as APIs (ex: httpp://localhost:3333)
-app.listen(3333);
+server.listen(3333);
+
+module.exports = server;
