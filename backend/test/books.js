@@ -12,33 +12,18 @@ describe("Teste APIs de Livro", function(){
     it("Lista de Livros", function(done){
         chai.request(server)
             .get("/books")
-            .end(function(err, res){
+            .end(function(err, res, body){
                 //sucesso na chamada e retorno da lista
                 expect(res.statusCode).to.equal(200);
-        });
-        done();
-    });
-
-    it("Detalhe do Livro pelo ID: Retorna o Livro Existente", function(done){
-        chai.request(server)
-            .get("/search?_id=5e29acfdf84c2710243c1a66")
-            .end(function(err, res, body){
-                //sucesso na chamada
-                expect(res.statusCode).to.equal(200);
-                //tratando o retorno
-                var _body = {};
-                try{
-                    _body = JSON.parse(body);
-                }
-                catch(e){
-                    _body = {};
-                }
+                //tem que retornar um array de registros, pois existem varios livros no banco
+                expect(res.body).should.be.a('array'); 
                 done();
         });
         done();
     });
     
-    it("Cadastrar Livro Único", function(done){
+    //antes desse teste deve ser excluído algum livro que exista no banco com nome: "Novo Livro"
+    it("Cadastrar Livro", function(done){
         var NovoLivro = {
             "nome": "Novo Livro",
             "preco": 34.90,
@@ -64,10 +49,9 @@ describe("Teste APIs de Livro", function(){
                 catch(e){
                     _body = {};
                 }
-                //retorna um unico registro, pois apenas um seria cadastrado
-                expect(_body).to.have.lengthOf.equal(1);
-                //se der sucesso retornará o ID do registro
+                //se der sucesso retornará o ID do novo registro
                 expect(_body).should.have.property("_id");
+                done();
             });
         done();
     });
@@ -98,13 +82,33 @@ describe("Teste APIs de Livro", function(){
                 catch(e){
                     _body = {};
                 }
-                //retorna um unico registro, pois apenas um seria cadastrado
-                expect(_body).to.have.lengthOf.equal(1);
                 //tem que retornar a propriedade code, já que daria erro
                 expect(_body).should.have.property("code");
                 //deve ser codigo 202 referente a duplicidade de título no banco de dados
                 expect(_body.code).to.equal(202);
+                done();
             });
+        done();
+    });
+
+    it("Detalhe do Livro pelo ID: Retorna o Livro Existente", function(done){
+        chai.request(server)
+            .get("/search?_id=5e29acfdf84c2710243c1a66")
+            .end(function(err, res, body){
+                //sucesso na chamada
+                expect(res.statusCode).to.equal(200);
+                //tratando o retorno
+                var _body = {};
+                try{
+                    _body = JSON.parse(body);
+                }
+                catch(e){
+                    _body = {};
+                }
+                //se trouxer informação específica buscou corretamente
+                expect(_body).should.have.property("autor");
+                done();
+        });
         done();
     });
     
