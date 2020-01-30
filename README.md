@@ -17,7 +17,7 @@ Projeto criado para o desafio, referente a vaga de Desenvolvedor Pleno, da Folha
   /backend/src/index.js
 - Configurar, no backend, o caminho da aplicação WEB que consumir as APIs (está configurado http://localhost:3000)
   /backend/src/index.js
-- Configurar no backend a porta que as APIs utilizar�o (está configurada a porta 3333)
+- Configurar no backend a porta que as APIs utilizarão (está configurada a porta 3333)
   /backend/src/index.js
 - Configurar na aplicação WEB a URL do backend (está configurada para http://localhost:3333)
   /web/services/api.js 
