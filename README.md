@@ -1,6 +1,16 @@
 # DESAFIO DESENVOLVEDOR PLENO
 
-Projeto criado para o desafio, referente a vaga de Desenvolvedor Pleno, da Folha Dirigida Online.
+Projeto criado para o desafio, referente a vaga de Desenvolvedor Pleno, da Folha Dirigida Online. Projeto consistia em criar uma loja de livros e controlar o carrinho de compras. Banco de Dados Mongoose e aplicação em React.
+
+ ![](/assets/00-lista-livros.png)
+
+ ![](/assets/01-cadastro-livro.png)
+
+ ![](/assets/02-detalhe-livro.png)
+
+ ![](/assets/03-detalhe-livro-carrinho.png)
+
+ ![](/assets/04-carrinho-de-compras.png)
 
 ## AUTOR
 
