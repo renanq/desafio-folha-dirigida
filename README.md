@@ -1,4 +1,6 @@
-# DESAFIO DESENVOLVEDOR PLENO
+# DESAFIO FOLHA DIRIGIDA
+
+Desenvolvido por [Renan Queiroz](https://www.rqweb.com.br) | [renan@rqweb.com.br](mailto:renan@rqweb.com.br)
 
 Projeto criado para o desafio, referente a vaga de Desenvolvedor Pleno, da Folha Dirigida Online. Projeto consistia em criar uma loja de livros e controlar o carrinho de compras. Banco de Dados Mongoose e aplicação em React.
 
@@ -12,9 +14,6 @@ Projeto criado para o desafio, referente a vaga de Desenvolvedor Pleno, da Folha
 
  ![](/assets/04-carrinho-de-compras.png)
 
-## AUTOR
-
-* **Renan Queiroz** - [renanq](https://github.com/renanq)
 
 ## INSTALAÇÃO E CONFIGURAÇÃO
 
